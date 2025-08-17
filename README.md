@@ -44,7 +44,7 @@ SET DecimalSep='.';
 SET ThousandSep=',';
 ```
 
-In this example we can determinate some financial analysis using three functions by ssePyToolsProfit.
+In this example we can determinate some financial analysis using three functions by ssePyToolsProfit. use the example.csv file to load the data
 
 ```Qlik Script
 FinancialData:
@@ -78,7 +78,31 @@ LOAD
 RESIDENT FinancialData;
 ```
 
-All three functions are Aggregate type, so their effect is much better appreciated in KPIs. The analysis included are: margin volatility, break-even and price elasticity.
+All three functions are Aggregate type, so their effect is much better appreciated in KPIs. The analysis included are: margin volatility, break-even and price elasticity. All Returns a Dual value type, in Qlik Sense for extract the String you can use a Text function, and the number value you can use a Num function. Some functions has more than one value inside the String returned value, in this cases you can use a TextBetween function.
 
 <img width="1024" height="768" alt="Result of the function" src="https://github.com/user-attachments/assets/090cfbcd-6235-48e6-a3b9-eb13fb827a0e" />
 
+# Available Functions
+
+0. MarginVolatility: Calculates margin volatility and risk assessment.
+
+```Qlik Script
+num(ssePyToolsProfit.MarginVolatility(totalSales, totalCosts))
+Text(ssePyToolsProfit.MarginVolatility(totalSales, totalCosts))
+```
+
+1. BreakEvenAnalysis: Calculates break-even point and safety margins. The returned string value contains two parts inside: the break-even units and the break-even safety margin.
+
+```Qlik Script
+TextBetween(
+Text(ssePyToolsProfit.BreakEvenAnalysis(fixedCosts, variableCostPerUnit, pricePerUnit, unitsSold)
+, 'Margin Safety: ', '')
+```
+
+2. PriceElasticity: Calculate the price elasticity of demand using linear regression. The returned string value contains a json format.
+
+```Qlik Script
+TextBetween(
+Text(ssePyToolsProfit.PriceElasticity(pricePerUnit, unitsSold, backOrder, Month))
+, '"interpretation": ', ',')
+```
