@@ -18,7 +18,7 @@ python -m grpc_tools.protoc -I proto --proto_path=. --python_out=. --grpc_python
 ```
 This creates:
 
-<img width="525" height="320" alt="gRPC Protocol Files" src="https://github.com/user-attachments/assets/3fa7a5c4-af06-4bc7-a1fb-d15e810a69da" />
+<img width="525" height="100" alt="gRPC Protocol Files" src="https://github.com/user-attachments/assets/3fa7a5c4-af06-4bc7-a1fb-d15e810a69da" />
 
 # Start the SSE server
 ```bash
@@ -80,7 +80,7 @@ RESIDENT FinancialData;
 
 All three functions are Aggregate type, so their effect is much better appreciated in KPIs. The analysis included are: margin volatility, break-even and price elasticity. All Returns a Dual value type, in Qlik Sense for extract the String you can use a Text function, and the number value you can use a Num function. Some functions has more than one value inside the String returned value, in this cases you can use a TextBetween function.
 
-<img width="1024" height="768" alt="Result of the function" src="https://github.com/user-attachments/assets/090cfbcd-6235-48e6-a3b9-eb13fb827a0e" />
+<img width="1024" height="600" alt="Result of the function" src="https://github.com/user-attachments/assets/090cfbcd-6235-48e6-a3b9-eb13fb827a0e" />
 
 # Available Functions
 
